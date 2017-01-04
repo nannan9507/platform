@@ -33,8 +33,12 @@ const webpackConfig = {
         }
       },
       {
-        test: '/\.less$/',
+        test: /\.less/,
         loader: 'style!css!less'
+      },
+      {
+        test: /\.css/,
+        loader: 'style!css'
       }
     ]
   },
