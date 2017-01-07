@@ -5,6 +5,11 @@ export default [
     component: require('pages/Home')
   },
   {
+    name: 'Account',
+    path: '/account',
+    component: require('pages/Account')
+  },
+  {
     path: '*',
     redirect: '/'
   }

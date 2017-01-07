@@ -9,6 +9,8 @@ import App from './App.vue'
 import store from './store'
 import routes from './helper/routes'
 
+import 'less/bootstrap.less'
+
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
@@ -16,7 +18,6 @@ Vue.use(MuseUI)
 
 
 const router = new VueRouter({
-  mode: 'hash',
   routes: routes
 })
 

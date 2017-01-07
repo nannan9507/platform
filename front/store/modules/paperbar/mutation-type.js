@@ -1,0 +1,1 @@
+export const SAVE_PAPER_VALUE = 'SAVE_PAPER_VALUE'
