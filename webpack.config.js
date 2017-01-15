@@ -2,11 +2,11 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-var precss = require('precss');
-var cssnext = require('cssnext');
-var autoprefixer = require('autoprefixer');
-var cssnano = require('cssnano');
-
+const precss = require('precss');
+const cssnext = require('cssnext');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const vuxLoader = require('vux-loader');
 
 const extractCSS = new ExtractTextPlugin('styles/style.css')
 
@@ -22,22 +22,25 @@ const webpackConfig = {
     alias: {
       'pages': path.resolve(__dirname, 'front/pages'),
       'components': path.resolve(__dirname, 'front/pages/components'),
-      'third': path.resolve(__dirname, 'node_modules/')
+      'third': path.resolve(__dirname, 'node_modules/'),
+      'less': path.resolve(__dirname, 'front/styles/less/'),
+      'vux-components': 'vux/src/components/'
     }
   },
   module: {
     loaders: [
       {
         test: /\.vue/,
-        loader: 'vue',
-        exclude: /node_modules/
+        loader: 'vue'
       },
       {
-        test: /\.js/,
+        test: /vux.src.*?js$/,
+        loader: 'babel'
+      },
+      {
+        test: /\.js$/,
         loader: 'babel',
-        exclude: (path) => {
-          return !!path.match(/node_modules/);
-        }
+        exclude: /node_modules/
       },
       {
         test: /\.less$/,
@@ -92,4 +95,13 @@ if (process.env.NODE_ENV === 'development') {
   ];
 }
 
-module.exports = webpackConfig;
+module.exports = vuxLoader.merge(webpackConfig, {
+  plugins: [
+    {
+      name: 'vux-ui'
+    },
+    {
+      name: 'duplicate-style'
+    }
+  ]
+})

@@ -2,16 +2,18 @@
   <div class="mobile">
     <div class="container">
       <router-view></router-view>
+      <Cell></Cell>
     </div>
   </div>
 </template>
 
 <script>
+import Cell from 'vux-components/cell'
 import { mapGetters, mapState, mapActions } from 'vuex'
 
 export default {
   components: {
-
+    Cell
   },
   data() {
     return {}
@@ -27,3 +29,7 @@ export default {
   }
 }
 </script>
+
+<style lang="less">
+@import '~vux/src/styles/reset.less';
+</style>
