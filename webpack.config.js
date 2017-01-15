@@ -16,7 +16,8 @@ const webpackConfig = {
     alias: {
       'pages': path.resolve(__dirname, 'front/pages'),
       'components': path.resolve(__dirname, 'front/pages/components'),
-      'less': path.resolve(__dirname, 'front/styles/less')
+      'less': path.resolve(__dirname, 'front/styles/less'),
+      'third': path.resolve(__dirname, 'node_modules/')
     }
   },
   module: {
@@ -36,12 +37,12 @@ const webpackConfig = {
       {
         test: /\.less/,
         loader: 'style!css!less'
-      },
-      {
-        test: /\.css/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       }
     ]
+  },
+  vue: {
+    css: ExtractTextPlugin.extract("css"),
+    less: ExtractTextPlugin.extract("css!less")
   },
   plugins: [
     new webpack.DefinePlugin({

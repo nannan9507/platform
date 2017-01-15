@@ -3,13 +3,7 @@ import * as getters from './getters'
 import mutations from './mutations'
 
 const state = {
-  id: '',
-  username: '',
-  password: '',
-  gender: '',
-  phone: '',
-  address: '',
-  token: ''
+  title: ''
 }
 
 export default{
