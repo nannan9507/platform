@@ -2,21 +2,26 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+var precss = require('precss');
+var cssnext = require('cssnext');
+var autoprefixer = require('autoprefixer');
+var cssnano = require('cssnano');
+
+
+const extractCSS = new ExtractTextPlugin('styles/style.css')
 
 const webpackConfig = {
   entry: ['./front/main.js'],
   output: {
     path: path.resolve('./server/dist'),
     publicPath: '/dist/',
-    filename: 'bundle.js'
+    filename: 'scripts/bundle.js'
   },
-  devtool: 'cheap-module-source-map',
   resolve: {
-    extensions: ['', '.js', '.vue', '.less'],
+    extensions: ['', '.js', '.vue', '.css', '.less'],
     alias: {
       'pages': path.resolve(__dirname, 'front/pages'),
       'components': path.resolve(__dirname, 'front/pages/components'),
-      'less': path.resolve(__dirname, 'front/styles/less'),
       'third': path.resolve(__dirname, 'node_modules/')
     }
   },
@@ -35,14 +40,13 @@ const webpackConfig = {
         }
       },
       {
-        test: /\.less/,
-        loader: 'style!css!less'
+        test: /\.less$/,
+        loader: extractCSS.extract(['css', 'less'])
       }
     ]
   },
-  vue: {
-    css: ExtractTextPlugin.extract("css"),
-    less: ExtractTextPlugin.extract("css!less")
+  postcss: function () {
+    return [autoprefixer, precss, cssnano, cssnext]
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -67,8 +71,8 @@ const webpackConfig = {
         except: ['$', 'exports', 'require']
       }
     }),
-    new ExtractTextPlugin('main.css'),
     new webpack.NoErrorsPlugin(),
+    extractCSS
   ]
 }
 
@@ -76,7 +80,6 @@ if (process.env.NODE_ENV === 'development') {
   const hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 
   webpackConfig.entry.push(hotMiddlewareScript);
-  webpackConfig.devtool = 'cheap-module-eval-source-map';
   webpackConfig.plugins = [
     new webpack.DefinePlugin({
       'process.env': {
@@ -85,7 +88,7 @@ if (process.env.NODE_ENV === 'development') {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new ExtractTextPlugin('main.css'),
+    extractCSS
   ];
 }
 

@@ -7,10 +7,10 @@ import App from './App.vue'
 import store from './store'
 import routes from './helper/routes'
 
+import './styles/less/bootstrap.less'
+
 import FastClick from 'fastclick'
 FastClick.attach(document.body)
-
-import 'less/bootstrap.less'
 
 
 Vue.use(VueRouter)
