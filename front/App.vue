@@ -1,31 +1,35 @@
 <template>
   <div class="mobile">
     <div class="container">
+      <tabbar>
+        <tabbar-item v-for="item in paperbar.barList" :link="item.link" :selected="$route.path === item.link">
+          <span slot="label">{{ item.title }}</span>
+        </tabbar-item>
+      </tabbar>
       <router-view></router-view>
-      <Cell></Cell>
     </div>
   </div>
 </template>
 
 <script>
-import Cell from 'vux-components/cell'
 import { mapGetters, mapState, mapActions } from 'vuex'
+
+import { Tabbar, TabbarItem } from 'vux-components/tabbar'
+import { XHeader } from 'vux-components/x-header'
 
 export default {
   components: {
-    Cell
+    Tabbar,
+    TabbarItem
+  },
+  mounted() {
+    console.log(this)
   },
   data() {
     return {}
   },
   computed: {
     ...mapState(['paperbar', 'appbar'])
-  },
-  methods: {
-    ...mapActions(['savePaperValue', 'saveAppbarTitle']),
-    handleChange (val) {
-      this.savePaperValue(val);
-    }
   }
 }
 </script>

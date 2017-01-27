@@ -2,18 +2,20 @@ import * as actions from './actions'
 import * as getters from './getters'
 import mutations from './mutations'
 
+import utils from '../../../service/utils.js'
+
 let barList = [
   {
     value: 'home',
     title: '首页',
-    icon: 'home',
-    href: '#/'
+    icon: '',
+    link: '/'
   },
   {
     value: 'account',
     title: '我',
-    icon: 'account_box',
-    href: '#/account'
+    icon: '',
+    link: '/account'
   },
 ]
 

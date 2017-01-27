@@ -24,7 +24,8 @@ const webpackConfig = {
       'components': path.resolve(__dirname, 'front/pages/components'),
       'third': path.resolve(__dirname, 'node_modules/'),
       'less': path.resolve(__dirname, 'front/styles/less/'),
-      'vux-components': 'vux/src/components/'
+      'vux-components': 'vux/src/components',
+      'rootSrc': path.resolve(__dirname, 'front'),
     }
   },
   module: {

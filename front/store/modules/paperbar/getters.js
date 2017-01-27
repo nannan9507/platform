@@ -1,1 +1,1 @@
-export const getValue = state => state.value
+export const getValue = state => state.value;
