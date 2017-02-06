@@ -13,7 +13,8 @@
   "dependencies": {
     "ejs": "^2.5.5",
     "express": "^4.14.0",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "vux": "^2.1.0-rc.15"
   },
   "devDependencies": {
     "autoprefixer": "^6.6.1",
@@ -48,7 +49,7 @@
     "vue-template-compiler": "^2.1.8",
     "vuex": "^2.1.1",
     "vuex-router-sync": "^4.1.0",
-    "vux": "^2.0.11",
+    "vux": "^2.0.17",
     "vux-loader": "^1.0.17",
     "webpack": "^1.14.0",
     "webpack-dev-middleware": "^1.9.0",
