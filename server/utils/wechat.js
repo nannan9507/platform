@@ -16,7 +16,7 @@ const wechat = {
       return false;
     }
   },
-  wxsign: (req) => {
+  wxsign: (req, res) => {
     const echostr = req.query.echostr;
     const signature = req.query.signature;
     const timestamp = req.query.timestamp;

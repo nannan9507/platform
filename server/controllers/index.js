@@ -6,6 +6,6 @@ module.exports = (app) => {
   })
 
   app.get('/wxsign', (req, res) => {
-    wechat.wxsign(req);
+    wechat.wxsign(req, res);
   })
 }
