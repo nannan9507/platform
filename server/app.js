@@ -9,7 +9,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 app.use(express.static(path.join(__dirname, '')))
-app.set('port', 4000)
+app.set('port', 80)
 
 
 const Router = require( './controllers/index')
