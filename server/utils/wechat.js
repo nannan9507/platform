@@ -38,3 +38,5 @@ const wechat = {
     }
   }
 }
+
+module.exports = wechat;
