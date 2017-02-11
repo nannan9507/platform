@@ -8,8 +8,8 @@ function sha1(str) {
 }
 
 const wechat = {
-  wxCheck: () => {
-    const ua = window.navigator.userAgent.toLowerCase();
+  wxCheck: (req) => {
+    const ua = req.headers['user-agent'].toLowerCase();
     if (ua.match(/MicroMessenger/i) == 'micromessenger') {
       return true;
     } else {
