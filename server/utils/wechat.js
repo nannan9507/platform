@@ -30,6 +30,7 @@ const wechat = {
     let sortStr = tmpArr.join('');
 
     let sha1Str = sha1(sortStr);
+    console.log(signature, sha1Str)
 
     if (signature === sha1Str) {
       res.end(echostr);
