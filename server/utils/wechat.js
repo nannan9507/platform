@@ -1,5 +1,9 @@
 const crypto = require('crypto');
 
+const wx_info = {
+  token: 'nannan95'
+}
+
 function sha1(str) {
   var shasum = crypto.createHash("sha1");
   shasum.update(str);
@@ -22,9 +26,7 @@ const wechat = {
     const timestamp = req.query.timestamp;
     const nonce = req.query.nonce;
 
-    const token = 'nannan95';
-
-    let tmpArr = [token, timestamp, nonce];
+    let tmpArr = [wx_info.token, timestamp, nonce];
     tmpArr.sort();
 
     let sortStr = tmpArr.join('');
