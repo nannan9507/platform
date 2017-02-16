@@ -1,6 +1,11 @@
 <template>
   <div class="mobile">
     <div class="container">
+      <tab>
+        <tab-item selected>附近</tab-item>
+        <tab-item>桌游</tab-item>
+        <tab-item>引导者</tab-item>
+      </tab>
       <div class="content">
         <router-view></router-view>
       </div>
@@ -17,11 +22,14 @@
 import { mapGetters, mapState, mapActions } from 'vuex'
 
 import { Tabbar, TabbarItem } from 'vux-components/tabbar'
+import { Tab, TabItem } from 'vux-components/tab'
 
 export default {
   components: {
     Tabbar,
-    TabbarItem
+    TabbarItem,
+    Tab,
+    TabItem,
   },
   mounted() {
     console.log(this)

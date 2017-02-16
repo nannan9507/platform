@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'development') {
   const webpackConfig = require('../webpack.config.js')
 
   app.set('views', path.join(__dirname, 'template'))
-  app.use(express.static(path.join(__dirname, 'dist')))
+  app.use(express.static(path.join(__dirname, 'dist'), { maxAge: 0 }))
 
   const compiler = webpack(webpackConfig)
 
