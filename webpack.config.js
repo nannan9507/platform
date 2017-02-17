@@ -46,6 +46,10 @@ const webpackConfig = {
       {
         test: /\.less$/,
         loader: extractCSS.extract(['css', 'less'])
+      },
+      {
+        test: require.resolve('jquery'),
+        loader: 'expose?jQuery!expose?$'
       }
     ]
   },
@@ -57,6 +61,9 @@ const webpackConfig = {
       'process.env': {
         NODE_ENV: '"production"'
       }
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery'
     }),
     new HtmlWebpackPlugin({
       template: __dirname + '/server/template/production.ejs',

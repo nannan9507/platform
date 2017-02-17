@@ -6,6 +6,8 @@ import App from './App.vue'
 import store from './store'
 import routes from './helper/routes'
 
+import VueDirective from './directive/index'
+
 import 'less/bootstrap.less'
 
 import FastClick from 'fastclick'
@@ -14,7 +16,6 @@ FastClick.attach(document.body)
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
-
 
 const router = new VueRouter({
   routes: routes
